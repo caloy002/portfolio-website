@@ -568,58 +568,60 @@ function AboutImageGallery({ images }) {
 
   return (
     <div 
-      className="flex flex-col gap-4 w-full"
+      className="flex flex-col gap-4 w-full min-w-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Main Image Slider */}
-      <motion.div
-        className="glass-frame relative w-full select-none overflow-hidden"
-        whileHover={{ scale: 1.01 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-      >
-        <div className="glass-frame__glow" aria-hidden="true" />
-        
-        {/* Main image container */}
-        <div className="glass-frame__inner relative aspect-[4/5] max-h-[420px] w-full overflow-hidden bg-theme-surface sm:max-h-none">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.img
-              key={page}
-              src={images[activeIndex]}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              alt={`About gallery image - ${aboutCaptions[activeIndex]}`}
-              className="absolute inset-0 h-full w-full object-cover object-center"
-            />
-          </AnimatePresence>
+      <div className="w-full min-w-0 overflow-hidden">
+        <motion.div
+          className="glass-frame relative w-full select-none overflow-hidden"
+          whileHover={{ scale: 1.01 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+        >
+          <div className="glass-frame__glow" aria-hidden="true" />
+          
+          {/* Main image container */}
+          <div className="glass-frame__inner relative w-full overflow-hidden bg-theme-surface" style={{ aspectRatio: '4/5', maxHeight: '360px' }}>
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <motion.img
+                key={page}
+                src={images[activeIndex]}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                alt={`About gallery image - ${aboutCaptions[activeIndex]}`}
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+            </AnimatePresence>
 
-          {/* Navigation Overlay Buttons */}
-          <div className="absolute inset-0 flex items-center justify-between p-3 opacity-0 hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-            <button
-              type="button"
-              onClick={() => navigate(-1)}
-              className="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md hover:bg-black/60 active:scale-95 transition-all"
-              aria-label="Previous image"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => navigate(1)}
-              className="pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md hover:bg-black/60 active:scale-95 transition-all"
-              aria-label="Next image"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
+            {/* Navigation Overlay Buttons */}
+            <div className="absolute inset-0 flex items-center justify-between p-3 opacity-0 hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+              <button
+                type="button"
+                onClick={() => navigate(-1)}
+                className="pointer-events-auto flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md hover:bg-black/60 active:scale-95 transition-all"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => navigate(1)}
+                className="pointer-events-auto flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md hover:bg-black/60 active:scale-95 transition-all"
+                aria-label="Next image"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
       {/* Thumbnails Row */}
-      <div className="flex gap-2 overflow-x-auto pb-2 px-0.5 scrollbar-none snap-x snap-mandatory justify-start sm:justify-center">
+      <div className="flex gap-1.5 overflow-x-auto pb-2 px-0.5 scrollbar-none snap-x snap-mandatory">
         {images.map((img, i) => {
           const isActive = i === activeIndex
           return (
@@ -627,7 +629,7 @@ function AboutImageGallery({ images }) {
               key={i}
               type="button"
               onClick={() => setIndex(i)}
-              className={`relative aspect-square w-12 h-12 shrink-0 overflow-hidden rounded-md border transition-all duration-300 focus:outline-none cursor-pointer snap-center ${
+              className={`relative aspect-square w-10 h-10 sm:w-12 sm:h-12 shrink-0 overflow-hidden rounded-md border transition-all duration-300 focus:outline-none cursor-pointer snap-center ${
                 isActive 
                   ? 'border-[#06b6d4] scale-105 shadow-[0_0_12px_rgba(6,182,212,0.4)] z-10' 
                   : 'border-theme-strong opacity-50 hover:opacity-100 hover:scale-105'
@@ -659,21 +661,21 @@ function About() {
           description="Developer profile, background, and technical skills."
         />
 
-        <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:items-start lg:gap-10">
-          <SectionReveal delay={0.1} className="mx-auto w-full max-w-md lg:max-w-none">
+        <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:items-start lg:gap-10 w-full min-w-0">
+          <SectionReveal delay={0.1} className="w-full min-w-0 overflow-hidden">
             <AboutImageGallery images={about.images} />
           </SectionReveal>
 
-          <SectionReveal delay={0.15}>
-            <div className="glass-panel flex h-full flex-col justify-center overflow-hidden">
+          <SectionReveal delay={0.15} className="w-full min-w-0">
+            <div className="glass-panel flex h-full flex-col justify-center overflow-hidden w-full">
               <div className="space-y-4 sm:space-y-5">
                 {about.paragraphs.map((paragraph) => (
-                  <p key={paragraph.slice(0, 30)} className="section-description leading-7" style={{ overflowWrap: 'break-word', wordBreak: 'break-word' }}>
+                  <p key={paragraph.slice(0, 30)} className="section-description leading-7 break-words">
                     {paragraph}
                   </p>
                 ))}
               </div>
-              <div className="mt-8 flex flex-wrap gap-2">
+              <div className="mt-6 flex flex-wrap gap-2">
                 {['UI/UX', 'Web Apps', 'Game Dev'].map((item) => (
                   <span key={item} className="minimal-tag">
                     {item}

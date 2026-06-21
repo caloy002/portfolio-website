@@ -153,6 +153,8 @@
   /* ── Layout ── */
   .section-wrap {
     @apply mx-auto w-full max-w-5xl px-5 sm:px-8 lg:max-w-6xl;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
 
   .scroll-section {
@@ -399,6 +401,8 @@
     box-shadow:
       0 20px 60px var(--shadow),
       0 0 40px var(--glass-glow);
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   @keyframes glass-border-flow {
@@ -412,6 +416,8 @@
     background: var(--surface);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .glass-frame__glow {
