@@ -147,7 +147,7 @@
 
   /* ── Layout ── */
   .section-wrap {
-    @apply mx-auto w-full max-w-5xl px-5 sm:px-8 lg:max-w-6xl;
+    @apply mx-auto w-full max-w-5xl px-4 sm:px-6 md:px-8 lg:max-w-6xl;
   }
 
   .scroll-section {
@@ -162,7 +162,7 @@
     min-height: 100dvh;
     min-height: 100svh;
     padding-top: calc(var(--site-nav-height) + 0.5rem);
-    padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
   }
 
   @media (min-width: 768px) {
@@ -832,17 +832,18 @@
   @media (max-width: 767px) {
     .scroll-section {
       padding-top: calc(var(--site-nav-height) + 0.75rem);
-      padding-bottom: 2rem;
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
     }
 
     .scroll-section--hero {
-      min-height: auto;
+      min-height: 100dvh;
+      min-height: 100svh;
       padding-top: calc(var(--site-nav-height) + 0.5rem);
-      padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
     }
 
     .site-main--mobile-nav {
-      padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+      padding-bottom: 0;
     }
 
     .mobile-bottom-nav {
@@ -873,6 +874,22 @@
     .mobile-input {
       min-height: 3rem;
       font-size: 1rem;
+    }
+
+    /* Prevent horizontal overflow on mobile */
+    .section-wrap {
+      overflow-x: hidden;
+    }
+
+    /* Tighter glass panel padding on mobile */
+    .glass-panel,
+    .minimal-panel {
+      padding: 1rem;
+    }
+
+    /* Stack contact grid on mobile */
+    .contact-grid-mobile {
+      grid-template-columns: 1fr !important;
     }
   }
 
