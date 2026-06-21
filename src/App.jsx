@@ -405,7 +405,7 @@ function Hero() {
   return (
     <Section id="home" variant="hero">
       <PageContainer>
-        <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+        <div className="grid items-center gap-6 sm:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
           <SectionReveal>
             <div data-section-anchor className="scroll-anchor">
               <p className="section-eyebrow mb-3 sm:mb-4">
@@ -434,9 +434,9 @@ function Hero() {
             <span className="section-divider mt-6 block" aria-hidden="true" />
 
             {/* Dynamic Role Cycler */}
-            <div className="mt-6 flex items-center gap-x-2 text-xs font-medium tracking-[0.25em] text-theme-muted uppercase min-h-[1.75rem]">
+            <div className="mt-4 sm:mt-6 text-xs font-medium tracking-[0.15em] sm:tracking-[0.25em] text-theme-muted uppercase">
               <span>I am a</span>
-              <div className="relative inline-flex items-center h-[1.75rem] overflow-hidden min-w-[280px]">
+              <div className="relative h-[1.75rem] overflow-hidden mt-1">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={roleIndex}
@@ -444,7 +444,7 @@ function Hero() {
                     animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
                     exit={{ y: -15, opacity: 0, filter: 'blur(3px)' }}
                     transition={{ duration: 0.4, ease: EASE }}
-                    className="absolute inset-y-0 left-0 flex items-center font-semibold tracking-[0.25em] whitespace-nowrap"
+                    className="absolute inset-x-0 top-0 flex items-center font-semibold tracking-[0.15em] sm:tracking-[0.25em]"
                   >
                     <span className="text-gradient-primary">
                       {hero.roles[roleIndex]}
@@ -480,9 +480,9 @@ function Hero() {
             </div>
           </SectionReveal>
 
-          <SectionReveal delay={0.15} className="flex justify-center lg:justify-end">
+          <SectionReveal delay={0.15} className="hidden sm:flex justify-center lg:justify-end">
             <motion.div
-              className="glass-frame relative w-full max-w-sm"
+              className="glass-frame relative w-full max-w-[280px] sm:max-w-sm"
               initial={{ opacity: 0, scale: 0.92, rotate: -2 }}
               whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
@@ -665,10 +665,10 @@ function About() {
           </SectionReveal>
 
           <SectionReveal delay={0.15}>
-            <div className="glass-panel flex h-full flex-col justify-center">
-              <div className="space-y-5">
+            <div className="glass-panel flex h-full flex-col justify-center overflow-hidden">
+              <div className="space-y-4 sm:space-y-5">
                 {about.paragraphs.map((paragraph) => (
-                  <p key={paragraph.slice(0, 30)} className="section-description leading-7">
+                  <p key={paragraph.slice(0, 30)} className="section-description leading-7" style={{ overflowWrap: 'break-word', wordBreak: 'break-word' }}>
                     {paragraph}
                   </p>
                 ))}
@@ -2347,7 +2347,7 @@ function App() {
               <Projects />
               <Contact />
             </main>
-            <footer className="border-t border-theme px-5 py-8 text-center backdrop-blur-sm max-md:pb-[calc(5rem+env(safe-area-inset-bottom))]">
+            <footer className="border-t border-theme px-5 py-8 text-center backdrop-blur-sm max-md:pb-[calc(5.5rem+env(safe-area-inset-bottom))]">
               <p className="text-xs tracking-wide text-theme-muted">
                 © 2026 John Carlo Casing
               </p>
