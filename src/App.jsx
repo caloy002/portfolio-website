@@ -62,7 +62,7 @@ function SectionHeader({ eyebrow, title, description, className = '' }) {
         <h2 className="section-title">{title}</h2>
       </div>
       <span className="section-divider block" aria-hidden="true" />
-      {description && <p className="section-description mx-auto mt-6 max-w-lg px-2">{description}</p>}
+      {description && <p className="section-description mx-auto mt-6 max-w-lg">{description}</p>}
     </SectionReveal>
   )
 }
@@ -407,7 +407,6 @@ function Hero() {
       <PageContainer>
         <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
           <SectionReveal>
-          <SectionReveal>
             <div data-section-anchor className="scroll-anchor">
               <p className="section-eyebrow mb-3 sm:mb-4">
                 {typed}
@@ -435,9 +434,9 @@ function Hero() {
             <span className="section-divider mt-6 block" aria-hidden="true" />
 
             {/* Dynamic Role Cycler */}
-            <div className="mt-6 flex flex-wrap items-center gap-x-2 text-xs font-medium tracking-[0.25em] text-theme-muted uppercase min-h-[1.75rem]">
+            <div className="mt-6 flex items-center gap-x-2 text-xs font-medium tracking-[0.25em] text-theme-muted uppercase min-h-[1.75rem]">
               <span>I am a</span>
-              <div className="relative inline-flex items-center h-[1.75rem] overflow-hidden min-w-0 flex-1 max-w-[260px] sm:max-w-none sm:min-w-[280px]">
+              <div className="relative inline-flex items-center h-[1.75rem] overflow-hidden min-w-[280px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={roleIndex}
@@ -582,7 +581,7 @@ function AboutImageGallery({ images }) {
         <div className="glass-frame__glow" aria-hidden="true" />
         
         {/* Main image container */}
-        <div className="glass-frame__inner relative aspect-[4/5] max-h-[320px] w-full overflow-hidden bg-theme-surface sm:max-h-[420px] md:max-h-none">
+        <div className="glass-frame__inner relative aspect-[4/5] max-h-[420px] w-full overflow-hidden bg-theme-surface sm:max-h-none">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.img
               key={page}
@@ -819,7 +818,7 @@ function ProjectDetailModal({ project, onClose }) {
               </button>
             </div>
 
-            <div className="max-h-[85vh] overflow-y-auto overscroll-contain">
+            <div className="flex-1 overflow-y-auto overscroll-contain md:max-h-[85vh]">
               <div className="relative border-b border-theme">
                 <div className="relative aspect-video w-full overflow-hidden bg-theme-surface">
                   <AnimatePresence mode="wait">
@@ -1208,7 +1207,7 @@ function Contact() {
           description="Have a project in mind or want to collaborate? Send a message."
         />
 
-        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8 contact-grid-mobile">
+        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
           <SectionReveal>
             <form className="glass-panel space-y-5" onSubmit={handleSubmit}>
               <FloatingInput id="contact-name" label="Name" type="text" placeholder=" " />
@@ -2342,13 +2341,13 @@ function App() {
             transition={{ duration: 1, ease: EASE_EXPO }}
           >
             <Navbar />
-            <main className="relative z-10">
+            <main className="site-main--mobile-nav relative z-10 md:pb-0">
               <Hero />
               <About />
               <Projects />
               <Contact />
             </main>
-            <footer className="border-t border-theme px-4 py-8 text-center backdrop-blur-sm pb-[calc(5.5rem+env(safe-area-inset-bottom))] md:pb-8">
+            <footer className="border-t border-theme px-5 py-8 text-center backdrop-blur-sm max-md:pb-[calc(5rem+env(safe-area-inset-bottom))]">
               <p className="text-xs tracking-wide text-theme-muted">
                 © 2026 John Carlo Casing
               </p>

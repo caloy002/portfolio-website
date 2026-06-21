@@ -20,7 +20,7 @@
     --border-strong: rgba(255, 255, 255, 0.75);
     --surface: rgba(255, 255, 255, 0.52);
     --surface-hover: rgba(255, 255, 255, 0.68);
-    --nav-bg: rgba(255, 255, 255, 0.62);
+    --nav-bg: rgba(255, 255, 255, 0.90);
     --shadow: rgba(80, 100, 180, 0.12);
     --overlay: rgba(10, 10, 18, 0.45);
     --skill-bar: rgba(10, 10, 18, 0.08);
@@ -46,7 +46,7 @@
     --border-strong: rgba(255, 255, 255, 0.28);
     --surface: rgba(255, 255, 255, 0.08);
     --surface-hover: rgba(255, 255, 255, 0.14);
-    --nav-bg: rgba(10, 14, 22, 0.62);
+    --nav-bg: rgba(10, 14, 22, 0.90);
     --shadow: rgba(0, 0, 0, 0.45);
     --overlay: rgba(0, 0, 0, 0.65);
     --skill-bar: rgba(255, 255, 255, 0.1);
@@ -147,7 +147,7 @@
 
   /* ── Layout ── */
   .section-wrap {
-    @apply mx-auto w-full max-w-5xl px-4 sm:px-6 md:px-8 lg:max-w-6xl;
+    @apply mx-auto w-full max-w-5xl px-5 sm:px-8 lg:max-w-6xl;
   }
 
   .scroll-section {
@@ -162,7 +162,7 @@
     min-height: 100dvh;
     min-height: 100svh;
     padding-top: calc(var(--site-nav-height) + 0.5rem);
-    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom));
   }
 
   @media (min-width: 768px) {
@@ -832,22 +832,21 @@
   @media (max-width: 767px) {
     .scroll-section {
       padding-top: calc(var(--site-nav-height) + 0.75rem);
-      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+      padding-bottom: 2rem;
     }
 
     .scroll-section--hero {
-      min-height: 100dvh;
-      min-height: 100svh;
+      min-height: auto;
       padding-top: calc(var(--site-nav-height) + 0.5rem);
-      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+      padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
     }
 
     .site-main--mobile-nav {
-      padding-bottom: 0;
+      padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
     }
 
     .mobile-bottom-nav {
-      padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+      padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
       border-top: 1px solid var(--border);
       background: var(--nav-bg);
       backdrop-filter: blur(28px) saturate(200%);
@@ -874,22 +873,6 @@
     .mobile-input {
       min-height: 3rem;
       font-size: 1rem;
-    }
-
-    /* Prevent horizontal overflow on mobile */
-    .section-wrap {
-      overflow-x: hidden;
-    }
-
-    /* Tighter glass panel padding on mobile */
-    .glass-panel,
-    .minimal-panel {
-      padding: 1rem;
-    }
-
-    /* Stack contact grid on mobile */
-    .contact-grid-mobile {
-      grid-template-columns: 1fr !important;
     }
   }
 
