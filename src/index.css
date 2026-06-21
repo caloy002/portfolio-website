@@ -153,7 +153,6 @@
   /* ── Layout ── */
   .section-wrap {
     @apply mx-auto w-full max-w-5xl px-5 sm:px-8 lg:max-w-6xl;
-    overflow-x: hidden;
     box-sizing: border-box;
   }
 
