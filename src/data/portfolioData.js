@@ -45,7 +45,7 @@ import project5_2 from '../assets/project5.2.png'
 import project5_3 from '../assets/project5.3.png'
 import stupidyanteVideo from '../assets/stupidyante.mp4'
 import twoDFirstOutputVideo from '../assets/2d_1st_output.mp4'
-import resumePdf from '../assets/Casing-John-Carlo-RESUME_.pdf'
+import resumePdf from '../assets/John Carlo Casing-RESUME.pdf'
 
 export const navLinks = [
   { id: 'home', label: 'Home', icon: 'Home' },
